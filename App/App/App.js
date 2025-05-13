@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text, StyleSheet } from 'react-native';
 
 import ChatScreen from './Screens/ChatScreen.js';
-import FoodSearchScreen from './Screens/FoodSearchScreen.js'; 
+import FoodSearchScreen from './Screens/FoodSearchScreen.js';
 
 const Tab = createBottomTabNavigator();
 
@@ -23,11 +23,41 @@ const SettingsScreen = () => (
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="Chatbot" component={ChatScreen} />
-        <Tab.Screen name="Food Search" component={FoodSearchScreen} /> 
-        <Tab.Screen name="Profile" component={ProfileScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Navigator
+        screenOptions={{ headerShown: false }}
+        tabBarOptions={{
+          activeTintColor: '#d4145a',
+          inactiveTintColor: 'gray', 
+        }}
+      >
+        <Tab.Screen
+          name="Chatbot"
+          component={ChatScreen}
+          options={{
+            tabBarIcon: () => <Text style={styles.tabIcon}>💬</Text>,
+          }}
+        />
+        <Tab.Screen
+          name="Food Search"
+          component={FoodSearchScreen}
+          options={{
+            tabBarIcon: () => <Text style={styles.tabIcon}>🍽️</Text>,
+          }}
+        />
+        <Tab.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{
+            tabBarIcon: () => <Text style={styles.tabIcon}>👤</Text>,
+          }}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={SettingsScreen}
+          options={{
+            tabBarIcon: () => <Text style={styles.tabIcon}>⚙️</Text>,
+          }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
@@ -38,5 +68,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  tabIcon: {
+    fontSize: 24,
   },
 });
