@@ -80,7 +80,7 @@ const ChatScreen = () => {
 
       <TouchableOpacity style={styles.largeButton} onPress={sendMessage}>
         <LinearGradient
-          colors={["#4facfe", "#00f2fe"]}
+          colors={["#d4145a", "#9b1d33"]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
           style={styles.gradientButton}
