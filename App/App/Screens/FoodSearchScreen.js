@@ -12,8 +12,7 @@ import {
   Keyboard,
 } from 'react-native';
 import { LinearGradient } from "expo-linear-gradient";
-
-const API_KEY = 'f103ebd67a3246e2b7d6f35a644719c7';
+import { API_KEY_FOOD } from '@env';
 
 const FoodSearchScreen = () => {
   const [query, setQuery] = useState('');
@@ -26,7 +25,7 @@ const FoodSearchScreen = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?query=${query}&apiKey=${API_KEY}&addRecipeNutrition=true&number=10`
+        `https://api.spoonacular.com/recipes/complexSearch?query=${query}&apiKey=${API_KEY_FOOD}&addRecipeNutrition=true&number=10`
       );
       const data = await response.json();
       setResults(data.results || []);
