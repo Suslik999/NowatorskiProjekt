@@ -11,8 +11,8 @@ import {
 } from "react-native";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { LinearGradient } from "expo-linear-gradient";
+import { API_KEY } from '@env'
 
-const API_KEY = "AIzaSyBurmSEkEYz9KNeV_EN4wQBN6or8yUs2ns";
 const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
