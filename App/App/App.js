@@ -5,6 +5,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 import ChatScreen from './Screens/ChatScreen.js';
 import FoodSearchScreen from './Screens/FoodSearchScreen.js';
+import BMICalculator from './Screens/BMICalculator.js';
 
 const Tab = createBottomTabNavigator();
 
@@ -27,7 +28,7 @@ export default function App() {
         screenOptions={{ headerShown: false }}
         tabBarOptions={{
           activeTintColor: '#d4145a',
-          inactiveTintColor: 'gray', 
+          inactiveTintColor: 'gray',
         }}
       >
         <Tab.Screen
@@ -42,6 +43,13 @@ export default function App() {
           component={FoodSearchScreen}
           options={{
             tabBarIcon: () => <Text style={styles.tabIcon}>🍽️</Text>,
+          }}
+        />
+        <Tab.Screen
+          name="BMI"
+          component={BMICalculator}
+          options={{
+            tabBarIcon: () => <Text style={styles.tabIcon}>🧮</Text>,
           }}
         />
         <Tab.Screen
