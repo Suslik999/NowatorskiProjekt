@@ -6,6 +6,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import ChatScreen from './Screens/ChatScreen.js';
 import FoodSearchScreen from './Screens/FoodSearchScreen.js';
 import BMICalculator from './Screens/BMICalculator.js';
+import AuthScreen from './Screens/AuthScreen.js';
 
 const Tab = createBottomTabNavigator();
 
@@ -54,7 +55,7 @@ export default function App() {
         />
         <Tab.Screen
           name="Profile"
-          component={ProfileScreen}
+          component={AuthScreen}
           options={{
             tabBarIcon: () => <Text style={styles.tabIcon}>👤</Text>,
           }}
