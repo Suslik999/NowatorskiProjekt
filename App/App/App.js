@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text, StyleSheet } from 'react-native';
-
 import ChatScreen from './Screens/ChatScreen.js';
 import FoodSearchScreen from './Screens/FoodSearchScreen.js';
 import BMICalculator from './Screens/BMICalculator.js';
 import AuthScreen from './Screens/AuthScreen.js';
+import StepCounter from './Screens/Stepscounter.js';
 
 const Tab = createBottomTabNavigator();
 
@@ -23,49 +23,43 @@ const SettingsScreen = () => (
 );
 
 export default function App() {
+  const [token, setToken] = useState(null);
+
+  if (!token) {
+    return (
+      <NavigationContainer>
+        <AuthScreen onLoginSuccess={(t) => setToken(t)} />
+      </NavigationContainer>
+    );
+  }
+
   return (
     <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={{ headerShown: false }}
-        tabBarOptions={{
-          activeTintColor: '#d4145a',
-          inactiveTintColor: 'gray',
-        }}
-      >
+      <Tab.Navigator screenOptions={{ headerShown: false }}>
         <Tab.Screen
           name="Chatbot"
           component={ChatScreen}
-          options={{
-            tabBarIcon: () => <Text style={styles.tabIcon}>💬</Text>,
-          }}
+          options={{ tabBarIcon: () => <Text style={styles.tabIcon}>💬</Text> }}
         />
         <Tab.Screen
           name="Food Search"
           component={FoodSearchScreen}
-          options={{
-            tabBarIcon: () => <Text style={styles.tabIcon}>🍽️</Text>,
-          }}
+          options={{ tabBarIcon: () => <Text style={styles.tabIcon}>🍽️</Text> }}
         />
         <Tab.Screen
           name="BMI"
           component={BMICalculator}
-          options={{
-            tabBarIcon: () => <Text style={styles.tabIcon}>🧮</Text>,
-          }}
+          options={{ tabBarIcon: () => <Text style={styles.tabIcon}>🧮</Text> }}
         />
         <Tab.Screen
           name="Profile"
-          component={AuthScreen}
-          options={{
-            tabBarIcon: () => <Text style={styles.tabIcon}>👤</Text>,
-          }}
+          component={ProfileScreen}
+          options={{ tabBarIcon: () => <Text style={styles.tabIcon}>👤</Text> }}
         />
         <Tab.Screen
-          name="Settings"
-          component={SettingsScreen}
-          options={{
-            tabBarIcon: () => <Text style={styles.tabIcon}>⚙️</Text>,
-          }}
+          name="Steps"
+          component={StepCounter}
+          options={{ tabBarIcon: () => <Text style={styles.tabIcon}>👟</Text> }}
         />
       </Tab.Navigator>
     </NavigationContainer>
